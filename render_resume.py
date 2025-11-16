@@ -6,11 +6,13 @@ render_resume.py
 - Attempts to compile PDF using tectonic
 """
 
+import argparse
 import json
 import shutil
 import subprocess
 import sys
 from pathlib import Path
+from tempfile import NamedTemporaryFile
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 from pylatexenc.latexencode import utf8tolatex
@@ -59,9 +61,13 @@ def sanitize_structure(obj):
     return obj
 
 
-def render_tex(context):
+def render_tex(
+    context,
+    input_template_file: Path,
+    output_tex_file: Path,
+):
     env = Environment(
-        loader=FileSystemLoader(str(BASE_DIR)),
+        loader=FileSystemLoader(str(input_template_file.parent)),
         undefined=StrictUndefined,
         block_start_string="{%",
         block_end_string="%}",
@@ -72,14 +78,14 @@ def render_tex(context):
     # Register filter available in the template: {{ value | latex_escape }}
     env.filters["latex_escape"] = latex_escape
 
-    template = env.get_template(TEMPLATE_FILE)
+    template = env.get_template(str(input_template_file.absolute().name))
     rendered = template.render(**context)
-    (BASE_DIR / OUTPUT_TEX).write_text(rendered, encoding="utf-8")
-    print(f"\n[ok] Wrote {OUTPUT_TEX}")
+    (output_tex_file).write_text(rendered, encoding="utf-8")
+    print(f"\n[ok] Wrote {output_tex_file}")
 
 
-def compile_pdf():
-    cmd = [get_tectonic_exe_path(), "--print", OUTPUT_TEX]
+def compile_pdf(generated_tex: Path, output_pdf: Path):
+    cmd = [get_tectonic_exe_path(), "--print", str(generated_tex.absolute())]
 
     if shutil.which(cmd[0]) is None:
         print(f"[error] Tectonic not found: {cmd[0]}")
@@ -88,10 +94,10 @@ def compile_pdf():
     print(f"[info] Running: {' '.join(cmd)}")
     try:
         subprocess.run(cmd, check=True)
-        candidate = Path(OUTPUT_TEX).with_suffix(".pdf")
+        candidate = Path(generated_tex).with_suffix(".pdf")
         if candidate.exists():
-            candidate.rename(OUTPUT_PDF)
-        print(f"\n[ok] PDF generated: {OUTPUT_PDF}")
+            shutil.move(str(candidate), str(output_pdf))
+        print(f"\n[ok] PDF generated: {output_pdf}")
         return True
     except subprocess.CalledProcessError as e:
         print(f"[warn] command failed: {' '.join(cmd)}; {e}")
@@ -99,24 +105,47 @@ def compile_pdf():
         return False
 
 
-def main():
-    if not (BASE_DIR / TEMPLATE_FILE).exists():
-        print(f"[error] Missing template: {TEMPLATE_FILE}")
+def main(input_template_file: Path, resume_json: Path, output_pdf: Path):
+    if not (input_template_file).exists():
+        print(f"[error] Missing template: {input_template_file}")
         sys.exit(1)
-    if not (BASE_DIR / INPUT_JSON).exists():
-        print(f"[error] Missing JSON: {INPUT_JSON}")
+    if not (resume_json).exists():
+        print(f"[error] Missing JSON: {resume_json}")
         sys.exit(1)
 
-    raw = json.loads((BASE_DIR / INPUT_JSON).read_text(encoding="utf-8"))
+    raw = json.loads((resume_json).read_text(encoding="utf-8"))
     clean = sanitize_structure(raw)
     # Pass raw JSON directly; template should call | latex_escape where needed.
-    render_tex(clean)
+    output_tex_file = NamedTemporaryFile(suffix=".tex", delete=False).name
+    render_tex(
+        clean,
+        input_template_file=Path(input_template_file),
+        output_tex_file=Path(output_tex_file),
+    )
 
-    if not compile_pdf():
+    if not compile_pdf(
+        generated_tex=Path(output_tex_file),
+        output_pdf=Path(output_pdf),
+    ):
         print(
             "\n[hint] Check if setup of tectonic was successful. If not try reinstalling tectonic manually as store as `tectonic`."
         )
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(
+        description="Render resume from JSON to LaTeX and compile to PDF."
+    )
+    parser.add_argument(
+        "--resume-json", type=str, default=INPUT_JSON, help="Path to resume JSON file."
+    )
+    parser.add_argument(
+        "--output-pdf", type=str, default=OUTPUT_PDF, help="Output PDF file name."
+    )
+    args = parser.parse_args()
+
+    main(
+        resume_json=Path(args.resume_json),
+        input_template_file=Path(TEMPLATE_FILE),
+        output_pdf=Path(args.output_pdf),
+    )
