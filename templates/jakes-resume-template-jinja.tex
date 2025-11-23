@@ -189,7 +189,15 @@
   \resumeProjectHeading{ {{ left }} }{ {{ right }} }
   {% if p.description or p.url %}
     \resumeItemListStart
-      {% if p.description %}\resumeItem{ {{ p.description | latex_escape }} }{% endif %}
+      {% if p.description %}
+        {% if p.description is iterable and p.description is not string %}
+          {% for desc_item in p.description %}
+            \resumeItem{ {{ desc_item | latex_escape }} }
+          {% endfor %}
+        {% else %}
+          \resumeItem{ {{ p.description | latex_escape }} }
+        {% endif %}
+      {% endif %}
       {% if p.url %}\resumeItem{ URL: {% raw %}\href{{% endraw %}{{ p.url | latex_escape }}}{ {{ p.url | latex_escape }} } }{% endif %}
     \resumeItemListEnd
   {% endif %}
