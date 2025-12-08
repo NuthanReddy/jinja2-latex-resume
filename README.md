@@ -1,6 +1,10 @@
 ## jinja2-latex-resume
 
-> Generate professional, highly customizable resumes with Python, Jinja2 templating, LaTeX, and automatic PDF export. Effortlessly create data-driven, beautiful CVs with modern, automated workflows.
+Good luck getting 94+ ATS score resumes in minutes! 🚀
+
+![](./examples/images/ATS-score.jpeg)
+
+> This project generates professional, highly customizable resumes with Python, Jinja2 templating, LaTeX, and automatic PDF export. Effortlessly create data-driven, beautiful CVs with modern, automated workflows.
 
 **In simple terms:**
 
@@ -20,13 +24,21 @@
 
 ### Example Usage:
 
-Given that you already have a resume json file named `resume-jim-halpert.json`, you can generate a PDF resume by running the following command:
+Given that you already have a resume json file named [`resume-jim-halpert.json`](./examples/input_resume_json/resume-jim-halpert.json), you can generate a PDF resume by running the following command:
 
 ```bash
 python render_resume.py --resume-json resume-jim-halpert.json --output-pdf jim-halpert.pdf
 ```
 
+Or, using `uv`:
+
+```bash
+uv run render_resume.py --resume-json resume-jim-halpert.json --output-pdf jim-halpert.pdf
+```
+
 Check out the generated PDF resume: [jim-halpert.pdf](examples/output_resume_pdf/jim-halpert.pdf)
+
+More examples of input JSON, and output PDF here: [examples/](./examples/)
 
 #### 🎉 Resume Preview 🎉
 
@@ -37,5 +49,15 @@ Check out the generated PDF resume: [jim-halpert.pdf](examples/output_resume_pdf
 - more templates 🥳
 - better documentation 
 - tested report for windows devices (currently only tested on linux - windows setup code is LLM generated but untested)
+
+### Usage Guide & Generating Resume JSON for the first time
+
+- I generally go to this site: [docstrange.nanonets.com](https://docstrange.nanonets.com/?output_type=flat-json) -> Upload existing resume PDF -> Export as flat JSON file and download it.
+
+- Then I use this prompt: [here](./examples/ChatGPT_prompt_generating_resume-json.md) to convert the flat JSON/plain text/markdown to the required resume JSON format.
+
+- Finally I tweak the generated JSON to add/remove sections as per my requirement.
+
+- Run the `render_resume.py` script to generate the PDF resume.
 
 > ⚠️ Still working on it. ⚠️

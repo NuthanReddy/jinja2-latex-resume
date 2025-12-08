@@ -11,5 +11,5 @@ wheels/
 
 # JSON in home directory are ignored since they may contain sensitive data
 /*.json
-*.pdf
+/*.pdf
 tectonic
