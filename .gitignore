@@ -10,4 +10,6 @@ wheels/
 .venv
 
 # JSON in home directory are ignored since they may contain sensitive data
-*.json
+/*.json
+*.pdf
+tectonic
