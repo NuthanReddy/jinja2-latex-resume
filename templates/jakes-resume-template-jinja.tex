@@ -79,15 +79,15 @@
   \vspace{-2pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+      \hspace{1pt}\textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
 }
 
 \newcommand{\resumeSubSubheading}[2]{
     \item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
+      \hspace{1pt}\textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-8pt}
 }
 
 \newcommand{\resumeProjectHeading}[2]{
@@ -101,7 +101,7 @@
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
@@ -116,17 +116,18 @@
 
 \begin{center}
     \textbf{\Huge \scshape {{ basics.name | latex_escape }}} \\ \vspace{1pt}
+    {% if basics.label %}\small {{ basics.label | latex_escape }} \\ \vspace{1pt}{% endif %}
     {%- if basics.phone -%}
-      +91 {{ basics.phone | latex_escape }}
+      {{ basics.phone | latex_escape }}
     {%- endif -%}
     {%- if basics.email -%}
-      \;|\; {% raw %}\href{{% endraw %}mailto:{{ basics.email | latex_escape }}}{\underline{ {{ basics.email | latex_escape }}} }
+      \;|\; {{ basics.email | latex_escape }}
     {%- endif -%}
     {%- if basics.linkedin -%}
-      \;|\; {% raw %}\href{{% endraw %}https://www.linkedin.com/in/{{ basics.linkedin | latex_escape }}/}{\underline{linkedin.com/in/{{ basics.linkedin | latex_escape }}/}}
+      \;|\; {{ basics.linkedin | latex_escape }}
     {%- endif -%}
     {%- if basics.github -%}
-      \;|\; {% raw %}\href{{% endraw %}https://github.com/{{ basics.github | latex_escape }}}{\underline{github.com/{{ basics.github | latex_escape }}}}
+      \;|\; {{ basics.github | latex_escape }}
     {%- endif -%}
 \end{center}
 
@@ -136,31 +137,14 @@
 {{ basics.summary | latex_escape }}
 {% endif %}
 
-%-----------PROGRAMMING SKILLS-----------
-\section*{ {{ headings.skills | default("Skills") | latex_escape }} }
-\begin{itemize}[leftmargin=0.15in, label={}]
-
-\small{
-    \item{
-        {%- for s in skills -%}
-            \textbf{ {{ s.name | latex_escape }} }: {
-                {%- for keyword in s.keywords -%}
-                    {{ keyword | latex_escape }}{% if not loop.last %}, {% endif %}
-                {%- endfor -%}
-            }{% if not loop.last %}\\ {% endif %}
-        {%- endfor -%}
-    }
-}
-\end{itemize}
-
 %-----------EXPERIENCE-----------
-\section*{ {{ headings.work | default("Work Experience") | latex_escape }} }
+\section*{Work Experience}
 \resumeSubHeadingListStart
-{% for job in work %}
+{% for job in headings.work.job %}
   \resumeSubheading
-    { {{ job.position | default('') | latex_escape }} }
-    { {% if job.startDate %}{{ job.startDate | latex_escape }}{% endif %}{% if job.endDate %} -- {{ job.endDate | latex_escape }}{% endif %} }
     { {{ job.company | default('') | latex_escape }} }
+    { {% if job.startDate %}{{ job.startDate | latex_escape }}{% endif %}{% if job.endDate %} -- {{ job.endDate | latex_escape }}{% endif %} }
+    { {{ job.position | default('') | latex_escape }} }
     { {{ job.location | default('') | latex_escape }} }
     {% if job.highlights %}
       \resumeItemListStart
@@ -174,10 +158,10 @@
 
 
 %-----------PROJECTS-----------
-{% if projects %}
-\section*{ {{ headings.projects | default("Projects") | latex_escape }} }
+{% if headings.projects %}
+\section*{Projects}
 \resumeSubHeadingListStart
-{% for p in projects %}
+{% for p in headings.projects %}
   {% set left = "\\textbf{ " ~ (p.name | latex_escape) ~ " }" %}
   {% set right = "" %}
   {% if p.startDate is defined or p.endDate is defined %}
@@ -187,9 +171,9 @@
     {% set left = left ~ " $|$ \\emph{ " ~ (p.keywords | join(", ") | latex_escape) ~ " }" %}
   {% endif %}
   \resumeProjectHeading{ {{ left }} }{ {{ right }} }
-  {% if p.description or p.url %}
+  {% if (p.description is defined and p.description) or (p.url is defined and p.url) %}
     \resumeItemListStart
-      {% if p.description %}
+      {% if p.description is defined and p.description %}
         {% if p.description is iterable and p.description is not string %}
           {% for desc_item in p.description %}
             \resumeItem{ {{ desc_item | latex_escape }} }
@@ -198,7 +182,7 @@
           \resumeItem{ {{ p.description | latex_escape }} }
         {% endif %}
       {% endif %}
-      {% if p.url %}\resumeItem{ URL: {% raw %}\href{{% endraw %}{{ p.url | latex_escape }}}{ {{ p.url | latex_escape }} } }{% endif %}
+      {% if p.url is defined and p.url %}\resumeItem{ URL: {% raw %}\href{{% endraw %}{{ p.url | latex_escape }}}{ {{ p.url | latex_escape }} } }{% endif %}
     \resumeItemListEnd
   {% endif %}
 {% endfor %}
@@ -206,20 +190,65 @@
 {% endif %}
 
 %-----------EDUCATION-----------
-\section*{ {{ headings.education | default("Education") | latex_escape }} }
+\section*{Education}
 \resumeSubHeadingListStart
-{% for e in education %}
+{% for e in headings.education %}
   \resumeSubheading
     { {{ e.institution | latex_escape }} }
-    { {% if e.startDate %}{{ e.startDate | latex_escape }}{% endif %}{% if e.endDate %} -- {{ e.endDate | latex_escape }}{% endif %} }
-    { {{ e.studyType | latex_escape }}{% if e.area %}, {{ e.area | latex_escape }}{% endif %} }
-    { {% if e.location %}{{ e.location | latex_escape }}{% endif %} }
-    {% if e.gpa %}
+    { {% if e.startDate is defined and e.startDate %}{{ e.startDate | latex_escape }}{% endif %}{% if e.endDate is defined and e.endDate %} -- {{ e.endDate | latex_escape }}{% endif %} }
+    { {{ e.studyType | latex_escape }}{% if e.area is defined and e.area %}, {{ e.area | latex_escape }}{% endif %} }
+    { {% if e.location is defined and e.location %}{{ e.location | latex_escape }}{% endif %} }
+    {% if e.gpa is defined and e.gpa %}
       \resumeItemListStart
         \resumeItem{GPA: {{ e.gpa | latex_escape }}}
       \resumeItemListEnd
     {% endif %}
 {% endfor %}
 \resumeSubHeadingListEnd
+
+%-----------PROGRAMMING SKILLS-----------
+\section*{Skills}
+\begin{itemize}[leftmargin=0in, label={}]
+
+\small{
+    \item{
+        {%- for s in headings.skills -%}
+            \textbf{ {{ s.name | latex_escape }} }: \hspace{0pt}{
+                {%- for keyword in s.keywords -%}
+                    {{ keyword | latex_escape }}{% if not loop.last %}, {% endif %}
+                {%- endfor -%}
+            }{% if not loop.last %}\\ {% endif %}
+        {%- endfor -%}
+    }
+}
+\end{itemize}
+
+%-----------CERTIFICATIONS-----------
+{% raw %}
+% {% if headings.certifications %}
+% \section*{Certifications}
+% \resumeSubHeadingListStart
+% {% for cert in headings.certifications %}
+%   \resumeProjectHeading
+%     {\textcolor{white}{\fontsize{1}{1}\selectfont Certification: }\textbf{ {{ cert.name | latex_escape }} }}
+%     { {% if cert.date is defined and cert.date %}{{ cert.date | latex_escape }}{% endif %} }
+% {% endfor %}
+% \resumeSubHeadingListEnd
+% {% endif %}
+{% endraw %}
+
+%-----------COURSES-----------
+{% raw %}
+% {% if headings.courses %}
+% \section*{Courses}
+% \resumeSubHeadingListStart
+% {% for course in headings.courses %}
+%   \resumeProjectHeading
+%     {\textcolor{white}{\fontsize{1}{1}\selectfont Course: }\textbf{ {{ course.name | latex_escape }} }{% if course.institute is defined and course.institute %} - \textit{ {{ course.institute | latex_escape }} }{% endif %}}
+%     { {% if course.year is defined and course.year %}{{ course.year | latex_escape }}{% endif %} }
+% {% endfor %}
+% \resumeSubHeadingListEnd
+% {% endif %}
+{% endraw %}
 
 \end{document}

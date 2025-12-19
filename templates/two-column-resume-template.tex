@@ -1,0 +1,218 @@
+%-------------------------
+% Two-Column Resume Template with Jinja2
+%-------------------------
+% Modern two-column design with skills sidebar
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+% Compatibility shim for engines (tectonic) that lack \pdfglyphtounicode
+\providecommand\pdfglyphtounicode[2]{}
+\input{glyphtounicode}
+
+% Define colors
+\definecolor{primaryblue}{RGB}{0, 123, 255}
+\definecolor{skillgray}{RGB}{230, 230, 230}
+\definecolor{textgray}{RGB}{64, 64, 64}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-8pt}\scshape\raggedright\large\color{primaryblue}
+}{}{0em}{}[\color{primaryblue}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+{% raw %}
+%-------------------------
+% Custom commands
+
+% Skill pill/tag command
+\newcommand{\skillpill}[1]{%
+  \tikz[baseline=(text.base)]{
+    \node[rectangle, rounded corners=3pt, fill=skillgray, inner sep=4pt, inner ysep=2pt] (text) {\small\textbf{#1}};
+  }
+}
+
+% Experience item
+\newcommand{\experienceItem}[5]{
+  \vspace{-2pt}
+  \textbf{\textcolor{white}{\fontsize{1}{1}\selectfont Position: }#1} \hfill \textcolor{white}{\fontsize{1}{1}\selectfont Date: }#2 \\
+  \textit{\small\textcolor{white}{\fontsize{1}{1}\selectfont Company: }#3} \hfill \textit{\small\textcolor{white}{\fontsize{1}{1}\selectfont Location: }#4} \\
+  \vspace{2pt}
+  #5
+  \vspace{8pt}
+}
+
+% Project item
+\newcommand{\projectItem}[2]{
+  \textbf{\textcolor{white}{\fontsize{1}{1}\selectfont Project: }#1} \\
+  \small{#2}
+  \vspace{6pt}
+}
+
+% Circular initials
+\newcommand{\circularinitials}[1]{
+  \begin{tikzpicture}
+    \node[circle, fill=primaryblue, text=white, font=\Large\bfseries, minimum size=2.5cm] {#1};
+  \end{tikzpicture}
+}
+
+%-------------------------------------------
+{% endraw %}
+
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \begin{minipage}[t]{0.7\textwidth}
+        \raggedright
+        \textbf{\Huge {{ basics.name | latex_escape }}} \\[4pt]
+        {% if basics.label %}
+        \color{primaryblue}\Large {{ basics.label | latex_escape }} \\[6pt]
+        {% endif %}
+        \normalsize
+        {% if basics.phone %}
+        \faPhone\ {{ basics.phone | latex_escape }}
+        {% endif %}
+        {% if basics.email %}
+        \quad \faEnvelope\ {{ basics.email | latex_escape }}
+        {% endif %}
+        \\[2pt]
+        {% if basics.linkedin %}
+        \faLinkedin\ {{ basics.linkedin | latex_escape }}
+        {% endif %}
+        {% if basics.github %}
+        \quad \faGithub\ {{ basics.github | latex_escape }}
+        {% endif %}
+    \end{minipage}%
+    \begin{minipage}[t]{0.3\textwidth}
+        \raggedleft
+        \vspace{-10pt}
+        {% raw %}\circularinitials{{% endraw %}{{ basics.initials | default('NR') | latex_escape }}{% raw %}}{% endraw %}
+    \end{minipage}
+\end{center}
+
+\vspace{-10pt}
+\noindent\rule{\textwidth}{0.4pt}
+
+%----------TWO COLUMN LAYOUT----------
+\begin{minipage}[t]{0.58\textwidth}
+
+%-----------SUMMARY-----------
+{% if basics.summary %}
+\section*{ {{ headings.summary | default("SUMMARY") | latex_escape }} }
+\small{{ basics.summary | latex_escape }}
+\normalsize
+{% endif %}
+
+%-----------EXPERIENCE-----------
+\section*{EXPERIENCE}
+{% for job in headings.work.job %}
+  \experienceItem
+    { {{ job.position | default('') | latex_escape }} }
+    { {% if job.startDate %}{{ job.startDate | latex_escape }}{% endif %}{% if job.endDate %} -- {{ job.endDate | latex_escape }}{% endif %} }
+    { {{ job.company | default('') | latex_escape }} }
+    { {{ job.location | default('') | latex_escape }} }
+    {
+      {% if job.summary is defined and job.summary %}
+      \small{{ job.summary | latex_escape }}\\[4pt]
+      {% endif %}
+      {% if job.highlights %}
+      \begin{itemize}[leftmargin=12pt, itemsep=1pt]
+        {% for h in job.highlights %}
+        \item \small{{ h | latex_escape }}
+        {% endfor %}
+      \end{itemize}
+      {% endif %}
+    }
+{% endfor %}
+
+%-----------EDUCATION-----------
+\section*{EDUCATION}
+{% for e in headings.education %}
+  \textbf{\textcolor{white}{\fontsize{1}{1}\selectfont Institution: }{{ e.institution | latex_escape }}} \hfill {% if e.startDate is defined and e.startDate %}{{ e.startDate | latex_escape }}{% endif %}{% if e.endDate is defined and e.endDate %} -- {{ e.endDate | latex_escape }}{% endif %} \\
+  \textit{\small\textcolor{white}{\fontsize{1}{1}\selectfont Degree: }{{ e.studyType | latex_escape }}{% if e.area is defined and e.area %}, {{ e.area | latex_escape }}{% endif %}} \hfill {% if e.location is defined and e.location %}{{ e.location | latex_escape }}{% endif %}
+  {% if e.gpa is defined and e.gpa %}
+  \\[2pt]
+  \small GPA: {{ e.gpa | latex_escape }}
+  {% endif %}
+  \vspace{6pt}
+{% endfor %}
+
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.38\textwidth}
+
+%-----------SKILLS-----------
+\section*{SKILLS}
+{% for s in headings.skills %}
+  \textbf{\textcolor{white}{\fontsize{1}{1}\selectfont Skill Category: }{{ s.name | latex_escape }}} \\[4pt]
+  {% for keyword in s.keywords %}
+    \skillpill{ {{ keyword | latex_escape }} }{% if not loop.last %} {% endif %}
+  {% endfor %}
+  \\[8pt]
+{% endfor %}
+
+%-----------PROJECTS-----------
+\section*{PROJECTS}
+{% for p in headings.projects %}
+  \projectItem
+    { {{ p.name | latex_escape }}{% if p.keywords is defined and p.keywords %} \textit{\small ({{ p.keywords | join(", ") | latex_escape }})}{% endif %} }
+    {
+      {% if p.description is defined and p.description %}
+        {% if p.description is iterable and p.description is not string %}
+          \begin{itemize}[leftmargin=12pt, itemsep=1pt]
+          {% for desc_item in p.description %}
+            \item {{ desc_item | latex_escape }}
+          {% endfor %}
+          \end{itemize}
+        {% else %}
+          {{ p.description | latex_escape }}
+        {% endif %}
+      {% endif %}
+    }
+{% endfor %}
+
+\end{minipage}
+
+\end{document}
