@@ -75,3 +75,9 @@ some examples:
 34. Demonstrated effective resource management by optimizing team allocation, resulting in a 15% increase in project delivery speed without compromising quality.
 35. Led initiatives that fostered diversity and inclusion within the team, enhancing creativity and problem-solving capabilities, which contributed to a 10% increase in project success rates.
 36. Outlined a clear vision for future leadership roles by setting strategic goals aligned with organizational growth, positioning myself for advancement within the company.
+
+
+
+
+
+            "Based on Customer Feedback and implemented several features to improve transparency, speed, reliability and telemetry.",
