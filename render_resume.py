@@ -24,7 +24,7 @@ setup_tectonic()
 TEMPLATES_DIR = Path("templates")
 
 BASE_DIR = Path(__file__).resolve().parent
-TEMPLATE_FILE = str(TEMPLATES_DIR / "jakes-resume-template-jinja.tex")
+TEMPLATE_FILE = str(TEMPLATES_DIR / "nuthan-resume-template-jinja.tex")
 INPUT_JSON = "resume.json"
 OUTPUT_TEX = "output_resume.tex"
 OUTPUT_PDF = "output_resume.pdf"
