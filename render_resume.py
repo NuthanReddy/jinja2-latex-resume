@@ -136,8 +136,9 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    template_root = Path(args.template_root)
     name = args.name
+    BASE_DIR = Path(__file__).resolve().parent
+    template_root = BASE_DIR / args.template_root
 
     input_json = template_root / f"{name}-resume-template.json"
     input_template_file = template_root / f"{name}-resume-template-jinja.tex"

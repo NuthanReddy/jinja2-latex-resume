@@ -117,9 +117,6 @@
             "Docker",
             "Hadoop",
             "HDFS",
-            "Hive",
-            "NiFi",
-            "HBase",
             "Elasticsearch",
             "Snowflake",
             "BigQuery"
