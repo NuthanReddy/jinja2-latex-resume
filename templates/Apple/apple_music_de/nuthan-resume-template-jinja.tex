@@ -190,32 +190,35 @@
 }
 \end{itemize}
 
+%-----------CONFERENCES / TECH BLOGS-----------
+\section*{Conferences / Tech Blogs}
+\begin{itemize}
+  \item \href{https://www.youtube.com/watch?v=SSSHKTb_r1A}{Apache Con NA 2020 - Google Pubsub vs Apache Kafka}
+  \item \href{https://serious-sense.medium.com/microservices-is-it-worth-the-hype-and-how-can-we-benefit-from-it-fa2a1b53d5cb}{Microservices — Is it worth the hype? And How can we benefit from it?}
+\end{itemize}
+
 %-----------CERTIFICATIONS-----------
-{% raw %}
-% {% if headings.certifications %}
-% \section*{Certifications}
-% \resumeSubHeadingListStart
-% {% for cert in headings.certifications %}
-%   \resumeProjectHeading
-%     {\textcolor{white}{\fontsize{1}{1}\selectfont Certification: }\textbf{ {{ cert.name | latex_escape }} }}
-%     { {% if cert.date is defined and cert.date %}{{ cert.date | latex_escape }}{% endif %} }
-% {% endfor %}
-% \resumeSubHeadingListEnd
-% {% endif %}
-{% endraw %}
+{% if headings.certifications %}
+\section*{Certifications}
+\resumeSubHeadingListStart
+{% for cert in headings.certifications %}
+  \resumeProjectHeading
+    {\textcolor{white}{\fontsize{1}{1}\selectfont Certification: }\textbf{ {{ cert.name | latex_escape }} }}
+    { {% if cert.date is defined and cert.date %}{{ cert.date | latex_escape }}{% endif %} }
+{% endfor %}
+\resumeSubHeadingListEnd
+{% endif %}
 
 %-----------COURSES-----------
-{% raw %}
-% {% if headings.courses %}
-% \section*{Courses}
-% \resumeSubHeadingListStart
-% {% for course in headings.courses %}
-%   \resumeProjectHeading
-%     {\textcolor{white}{\fontsize{1}{1}\selectfont Course: }\textbf{ {{ course.name | latex_escape }} }{% if course.institute is defined and course.institute %} - \textit{ {{ course.institute | latex_escape }} }{% endif %}}
-%     { {% if course.year is defined and course.year %}{{ course.year | latex_escape }}{% endif %} }
-% {% endfor %}
-% \resumeSubHeadingListEnd
-% {% endif %}
-{% endraw %}
+{% if headings.courses %}
+\section*{Courses}
+\resumeSubHeadingListStart
+{% for course in headings.courses %}
+  \resumeProjectHeading
+    {\textcolor{white}{\fontsize{1}{1}\selectfont Course: }\textbf{ {{ course.name | latex_escape }} }{% if course.institute is defined and course.institute %} - \textit{ {{ course.institute | latex_escape }} }{% endif %}}
+    { {% if course.year is defined and course.year %}{{ course.year | latex_escape }}{% endif %} }
+{% endfor %}
+\resumeSubHeadingListEnd
+{% endif %}
 
 \end{document}

@@ -21,14 +21,6 @@ from setup_tectonic import get_tectonic_exe_path, setup_tectonic
 
 setup_tectonic()
 
-TEMPLATES_DIR = Path("templates")
-
-BASE_DIR = Path(__file__).resolve().parent
-TEMPLATE_FILE = str(TEMPLATES_DIR / "nuthan-resume-template-jinja.tex")
-INPUT_JSON = "resume.json"
-OUTPUT_TEX = "output_resume.tex"
-OUTPUT_PDF = "output_resume.pdf"
-
 
 def latex_escape(s):
     if s is None:
@@ -137,15 +129,22 @@ if __name__ == "__main__":
         description="Render resume from JSON to LaTeX and compile to PDF."
     )
     parser.add_argument(
-        "--resume-json", type=str, default=INPUT_JSON, help="Path to resume JSON file."
+        "--template-root", type=str, default="templates/Default", help="Root directory for templates and output files."
     )
     parser.add_argument(
-        "--output-pdf", type=str, default=OUTPUT_PDF, help="Output PDF file name."
+        "--name", type=str, default="nuthan", help="Name prefix for resume files."
     )
     args = parser.parse_args()
 
+    template_root = Path(args.template_root)
+    name = args.name
+
+    input_json = template_root / f"{name}-resume-template.json"
+    input_template_file = template_root / f"{name}-resume-template-jinja.tex"
+    output_pdf = template_root / f"{name}-resume.pdf"
+
     main(
-        resume_json=Path(args.resume_json),
-        input_template_file=Path(TEMPLATE_FILE),
-        output_pdf=Path(args.output_pdf),
+        resume_json=Path(input_json),
+        input_template_file=Path(input_template_file),
+        output_pdf=Path(output_pdf),
     )
