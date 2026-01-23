@@ -1,0 +1,224 @@
+%-------------------------
+% Jinja Template for LaTeX Resume/CV
+%-------------------------
+% Author : Tuhin Mitra
+% Based off of: https://github.com/sb2nov/resume and https://www.overleaf.com/latex/templates/jakes-resume/syzfjbzwjncs
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+% Compatibility shim for engines (tectonic) that lack \pdfglyphtounicode
+\providecommand\pdfglyphtounicode[2]{}
+% Original line follows (kept for reference):
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\ifdefined\pdfgentounicode\else
+  \def\pdfgentounicode#1{}
+\fi
+
+{% raw %}
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \hspace{1pt}\textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \hspace{1pt}\textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-8pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+{% endraw %}
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+
+\begin{center}
+    \textbf{\Huge \scshape {{ basics.name | latex_escape }}} \\ \vspace{1pt}
+    {% if basics.label %}\small {{ basics.label | latex_escape }} \\ \vspace{1pt}{% endif %}
+    {%- if basics.phone -%}
+      {{ basics.phone | latex_escape }}
+    {%- endif -%}
+    {%- if basics.email -%}
+      \;|\; {{ basics.email | latex_escape }}
+    {%- endif -%}
+    {%- if basics.linkedin -%}
+      \;|\; {{ basics.linkedin | latex_escape }}
+    {%- endif -%}
+    {%- if basics.github -%}
+      \;|\; {{ basics.github | latex_escape }}
+    {%- endif -%}
+\end{center}
+
+%-----------SUMMARY-----------
+{% if basics.summary %}
+\section*{ {{ headings.summary | default("Summary") | latex_escape }} }
+{{ basics.summary | latex_escape }}
+{% endif %}
+
+%-----------EXPERIENCE-----------
+\section*{Work Experience}
+\resumeSubHeadingListStart
+{% for job in headings.work.job %}
+  \resumeSubheading
+    { {{ job.company | default('') | latex_escape }} }
+    { {% if job.startDate %}{{ job.startDate | latex_escape }}{% endif %}{% if job.endDate %} -- {{ job.endDate | latex_escape }}{% endif %} }
+    { {{ job.position | default('') | latex_escape }} }
+    { {{ job.location | default('') | latex_escape }} }
+    {% if job.highlights %}
+      \resumeItemListStart
+        {% for h in job.highlights %}
+          \resumeItem{ {{ h | latex_escape }} }
+        {% endfor %}
+      \resumeItemListEnd
+    {% endif %}
+{% endfor %}
+\resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section*{Education}
+\resumeSubHeadingListStart
+{% for e in headings.education %}
+  \resumeSubheading
+    { {{ e.institution | latex_escape }} }
+    { {% if e.startDate is defined and e.startDate %}{{ e.startDate | latex_escape }}{% endif %}{% if e.endDate is defined and e.endDate %} -- {{ e.endDate | latex_escape }}{% endif %} }
+    { {{ e.studyType | latex_escape }}{% if e.area is defined and e.area %}, {{ e.area | latex_escape }}{% endif %} }
+    { {% if e.location is defined and e.location %}{{ e.location | latex_escape }}{% endif %} }
+    {% if e.gpa is defined and e.gpa %}
+      \resumeItemListStart
+        \resumeItem{GPA: {{ e.gpa | latex_escape }}}
+      \resumeItemListEnd
+    {% endif %}
+{% endfor %}
+\resumeSubHeadingListEnd
+
+%-----------PROGRAMMING SKILLS-----------
+\section*{Skills}
+\begin{itemize}[leftmargin=0in, label={}]
+
+\small{
+    \item{
+        {%- for s in headings.skills -%}
+            \textbf{ {{ s.name | latex_escape }} }: \hspace{0pt}{
+                {%- for keyword in s.keywords -%}
+                    {{ keyword | latex_escape }}{% if not loop.last %}, {% endif %}
+                {%- endfor -%}
+            }{% if not loop.last %}\\ {% endif %}
+        {%- endfor -%}
+    }
+}
+\end{itemize}
+
+%-----------CONFERENCES / TECH BLOGS-----------
+\section*{Conferences / Tech Blogs}
+\begin{itemize}
+  \item \href{https://www.youtube.com/watch?v=SSSHKTb_r1A}{Apache Con NA 2020 - Google Pubsub vs Apache Kafka}
+  \item \href{https://serious-sense.medium.com/microservices-is-it-worth-the-hype-and-how-can-we-benefit-from-it-fa2a1b53d5cb}{Microservices — Is it worth the hype? And How can we benefit from it?}
+\end{itemize}
+
+%-----------CERTIFICATIONS-----------
+{% if headings.certifications %}
+\section*{Certifications}
+\resumeSubHeadingListStart
+{% for cert in headings.certifications %}
+  \resumeProjectHeading
+    {\textcolor{white}{\fontsize{1}{1}\selectfont Certification: }\textbf{ {{ cert.name | latex_escape }} }}
+    { {% if cert.date is defined and cert.date %}{{ cert.date | latex_escape }}{% endif %} }
+{% endfor %}
+\resumeSubHeadingListEnd
+{% endif %}
+
+%-----------COURSES-----------
+{% if headings.courses %}
+\section*{Courses}
+\resumeSubHeadingListStart
+{% for course in headings.courses %}
+  \resumeProjectHeading
+    {\textcolor{white}{\fontsize{1}{1}\selectfont Course: }\textbf{ {{ course.name | latex_escape }} }{% if course.institute is defined and course.institute %} - \textit{ {{ course.institute | latex_escape }} }{% endif %}}
+    { {% if course.year is defined and course.year %}{{ course.year | latex_escape }}{% endif %} }
+{% endfor %}
+\resumeSubHeadingListEnd
+{% endif %}
+
+\end{document}
