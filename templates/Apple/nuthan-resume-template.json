@@ -1,0 +1,284 @@
+{
+  "basics": {
+    "name": "Nuthan Reddy",
+    "label": "Big Data Solutions Architect",
+    "email": "nuthan.reddy999@gmail.com",
+    "linkedin": "linkedin.com/in/nuthanreddy/",
+    "github": "github.com/NuthanReddy",
+    "phone": "9474985552",
+    "location": {
+      "city": "Hyderabad",
+      "countryCode": "IN"
+    },
+    "summary": "Senior Software Engineer and Big Data Solutions Architect with 10+ years of experience architecting scalable data systems and leading high-performing engineering teams. Expert in distributed systems, cloud platforms, and big data technologies."
+  },
+  "headings": {
+    "work": {
+      "job": [
+        {
+          "position": "Senior Software Engineer",
+          "startDate": "Mar 2022",
+          "endDate": "Present",
+          "company": "Microsoft",
+          "location": "Hyderabad",
+          "highlights": [
+            "Directed Privacy Signals Team managing data deletion, export delivery, processing and compliance reporting across Microsoft services.",
+            "Architected and delivered 2-20x performance improvements in Data Scanning by eliminating bottlenecks and non-deterministic code.",
+            "Designed and deployed scalable Data Map solutions with APIs for asset tagging and updates, improving data governance.",
+            "Established deployment, monitoring and alerting frameworks for the Signals Team, ensuring high reliability and observability.",
+            "Led cross-functional teams to deliver distributed data engineering solutions on Azure and Kubernetes.",
+            "Drove cloud migration and compliance initiatives, collaborating with business and engineering stakeholders."
+          ]
+        },
+        {
+          "position": "Software Engineer III",
+          "startDate": "Oct 2020",
+          "endDate": "Mar 2022",
+          "company": "Walmart",
+          "location": "Bangalore",
+          "highlights": [
+            "Managed development of rule-based data processing framework for Enterprise Business Services Teams, focusing on scalable distributed systems.",
+            "Crafted modularized CILL rules engine with config-driven architecture for improved maintainability and compliance.",
+            "Developed Code Freeze App using Go to automate GitHub repo management via Slack, streamlining deployment processes.",
+            "Collaborated with cross-functional teams to deliver cloud-based data solutions on GCP and Kubernetes.",
+            "Implemented monitoring and alerting for data pipelines, ensuring reliability and compliance with business requirements.",
+            "Mentored junior engineers in distributed systems and data engineering best practices."
+          ]
+        },
+        {
+          "position": "Software Development Engineer I",
+          "startDate": "Jan 2019",
+          "endDate": "Oct 2020",
+          "company": "Sigmoid",
+          "location": "Bangalore",
+          "highlights": [
+            "Built planet-scale streaming pipeline supporting 100k req/sec, 1GB/sec throughput presented at Apache Con NA 2020, leveraging distributed systems and cloud technologies.",
+            "Spearheaded implementation of BigQuery-based NitroDB achieving 30% cost reduction while maintaining performance and compliance.",
+            "Designed and deployed multi-tenant search feature with Elasticsearch integration, delivering responsive experience for multiple organizations.",
+            "Contributed critical bug fixes to spark-snowflake as committer, ensuring data correctness at scale and collaborating with global teams.",
+            "Worked closely with business and engineering teams to deliver scalable, reliable data pipelines on GCP and Kubernetes.",
+            "Mentored new hires on distributed data engineering and compliance best practices."
+          ]
+        },
+        {
+          "position": "Consultant P2",
+          "startDate": "Jun 2015",
+          "endDate": "Jan 2019",
+          "company": "Capgemini",
+          "location": "Bangalore",
+          "highlights": [
+            "Delivered enterprise data solutions for clients across multiple industries, focusing on distributed systems and cloud migration.",
+            "Facilitated technical design sessions and translated complex business requirements into scalable architectures, emphasizing compliance and data governance.",
+            "Mentored junior team members on software development and data engineering best practices, including distributed systems and cloud platforms.",
+            "Implemented monitoring, alerting, and compliance frameworks for enterprise data pipelines.",
+            "Collaborated with cross-functional teams to deliver high-impact data engineering projects on AWS and Azure."
+          ]
+        }
+      ]
+    },
+    "education": [
+        {
+            "institution": "Indian Institute of Technology (IIT) Kharagpur",
+            "area": "Industrial & Systems Engineering",
+            "studyType": "Bachelor of Technology",
+            "startDate": "2011",
+            "endDate": "2015"
+        },
+      {
+            "institution": "Sri Chaitanya Jr College, Gudavalli",
+            "area": "Board of Intermediate Education",
+            "studyType": "XII",
+            "startDate": "2009",
+            "endDate": "2011"
+        },
+        {
+            "institution": "Gowtham Concept School, Gudivada",
+            "area": "Board of Secondary Education",
+            "studyType": "X",
+            "startDate": "2008",
+            "endDate": "2009"
+      }
+    ],
+    "skills": [
+      {
+        "name": "Core Technologies",
+        "keywords": [
+            "Python",
+            "Scala",
+            "SQL",
+            "Apache Spark",
+            "Spark Internals",
+            "Kafka",
+            "Kubernetes",
+            "Docker"
+        ]
+      },
+      {
+        "name": "Cloud & Data Platforms",
+        "keywords": [
+            "AWS",
+            "Azure",
+            "GCP",
+            "Databricks",
+            "Snowflake"
+        ]
+      },
+      {
+        "name": "Methodologies & Practices",
+        "keywords": [
+            "CI/CD",
+            "MLOps",
+            "Agile",
+            "Technical Project Delivery"
+        ]
+      },
+      {
+        "name": "Key Competencies",
+        "keywords": [
+            "Data Engineering",
+            "Distributed Systems",
+            "System Design & Architecture",
+            "Architecture Consulting",
+            "Client Management",
+            "Data Privacy & Compliance",
+            "Leadership & Mentoring",
+            "Problem Solving"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "name": "Azure Data Governance Platform",
+        "company": "Microsoft",
+        "keywords": ["Python", "Azure", "Data Architecture"],
+        "description": [
+          "Architected and delivered an enterprise-wide data governance solution for privacy and compliance.",
+          "Consulted with internal teams to optimize data scanning performance by up to 20x, removing critical bottlenecks.",
+          "Designed and deployed scalable APIs for data asset management, enabling robust data governance across services.",
+          "Established a production-grade deployment and monitoring framework, ensuring high reliability for a mission-critical system."
+        ]
+      },
+      {
+        "name": "Config-Driven Data Processing Framework",
+        "company": "Walmart",
+        "keywords": ["Spark", "Scala", "GCP", "Architecture", "CI/CD"],
+        "description": [
+          "Designed and delivered a modular, rule-based data processing architecture for enterprise business services.",
+          "Enabled flexible and maintainable data processing by creating a config-driven engine, reducing development overhead.",
+          "Streamlined deployment workflows by developing a CI/CD automation tool for GitHub repository management."
+        ]
+      },
+      {
+        "name": "End-to-End Streaming + Batch Data Platform",
+        "company": "Sigmoid for OpenX",
+        "keywords": ["Kafka", "GCP", "DataFlow", "Java", "Kubernetes", "Architecture"],
+        "description": [
+          "Delivered an end-to-end design, build, and deployment of a planet-scale streaming platform for a major ad-tech client.",
+          "Architected the solution to support 100k req/sec and 1GB/sec throughput, productionalizing a high-impact customer use case.",
+          "Engineered a resilient, auto-scaling architecture on GKE with a circuit breaker pattern to ensure 99.99% uptime."
+        ]
+      },
+      {
+        "name": "Cloud Data Warehouse Optimization",
+        "company": "Sigmoid",
+        "keywords": ["Apache Spark", "BigQuery", "Performance Tuning"],
+        "description": [
+          "Led a client project to migrate and optimize a large-scale data warehouse to BigQuery, achieving a 30% cost reduction.",
+          "Consulted on performance, implementing advanced algorithms (t-digest) to deliver 10-100x query performance improvements."
+        ]
+      },
+      {
+        "name": "Multi-Tenant Search Solution",
+        "company": "Sigmoid",
+        "keywords": ["Elasticsearch", "System Design", "Architecture"],
+        "description": [
+          "Designed and implemented a secure, multi-tenant search architecture for a client's SaaS platform.",
+          "Delivered a responsive and scalable search solution by integrating Elasticsearch with the core data platform."
+        ]
+      },
+      {
+        "name": "Spark-Snowflake Data Integration",
+        "company": "OpenX",
+        "keywords": ["Apache Spark", "Snowflake", "Python", "Data Migration"],
+        "description": [
+          "Guided a client's data integration strategy by contributing critical bug fixes to the open-source spark-snowflake connector.",
+          "Designed and built a robust ETL pipeline for a 3rd party data migration from GCS to Snowflake.",
+          "Provided consulting on Snowflake administration for cost management, security, and performance."
+        ]
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Databricks for Data Engineering",
+        "date": "2026"
+      },
+      {
+        "name": "Academy Accreditation - Databricks Fundamentals",
+        "date": "2026"
+      },
+        {
+            "name": "Cloud Computing and Distributed Systems",
+            "date": "2023"
+        },
+        {
+            "name": "AWS Certified Solutions Architect – Associate",
+            "date": "2022"
+        }
+    ],
+    "courses": [
+        {
+            "name": "Data Structures and Algorithms",
+            "year": "2015",
+            "institute": "IIT Kharagpur"
+        },
+        {
+            "name": "Soft Computing and Heuristic Search",
+            "year": "2015",
+            "institute": "IIT Kharagpur"
+        },
+        {
+            "name": "Functional Programming Principles in Scala",
+            "institute": "Coursera"
+        },
+        {
+            "name": "Java Memory Management",
+            "institute": "LinkedIn Learning"
+        },
+        {
+            "name": "Google Cloud Platform Big Data and Machine Learning Fundamentals",
+            "institute": "Coursera"
+        },
+        {
+            "name": "Google Cloud Platform Fundamentals: Core Infrastructure",
+            "institute": "Coursera"
+        },
+        {
+            "name": "Apache Kafka Series - Kafka Cluster Setup & Administration",
+            "institute": "Udemy Academy"
+        },
+        {
+            "name": "Feature Selection for Machine Learning",
+            "institute": "Udemy Academy"
+        },
+        {
+            "name": "AWS Certified Developer - Associate",
+            "year": "2018",
+            "institute": "Udemy"
+        },
+        {
+            "name": "AWS Certified Solutions Architect - Associate",
+            "year": "2018",
+            "institute": "Udemy"
+        },
+        {
+            "name": "Python for Data Science and Machine Learning Bootcamp",
+            "institute": "Udemy Academy"
+        },
+        {
+            "name": "Cloud Computing and Distributed Systems",
+            "institute": "IIT Patna"
+        }
+
+    ]
+  }
+}
