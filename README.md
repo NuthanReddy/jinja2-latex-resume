@@ -26,6 +26,10 @@ Given that you already have a resume json file named `resume-jim-halpert.json`, 
 python render_resume.py --resume-json resume-jim-halpert.json --output-pdf jim-halpert.pdf
 ```
 
+```bash
+python3.9 render_resume.py --resume-json templates/nuthan-resume-template.json --output-pdf templates/nuthan.pdf
+```
+
 Check out the generated PDF resume: [jim-halpert.pdf](examples/output_resume_pdf/jim-halpert.pdf)
 
 #### 🎉 Resume Preview 🎉
