@@ -8,6 +8,3 @@ wheels/
 .dump/
 # Virtual environments
 .venv
-
-# JSON in home directory are ignored since they may contain sensitive data
-*.json
