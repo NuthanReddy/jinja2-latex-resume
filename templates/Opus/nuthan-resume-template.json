@@ -113,8 +113,8 @@
         "name": "Additional Technologies",
         "keywords": [
             "Airflow",
-            "Kubernetes",
-            "Docker",
+            "Glue",
+            "S3",
             "Hadoop",
             "HDFS",
             "Elasticsearch",
