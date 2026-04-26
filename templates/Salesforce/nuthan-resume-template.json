@@ -1,0 +1,311 @@
+{
+  "basics": {
+    "name": "Nuthan Reddy",
+    "label": "Lead Data & Software Engineer | Data Governance | Distributed Systems",
+    "email": "nuthan.reddy999@gmail.com",
+    "linkedin": "linkedin.com/in/nuthanreddy/",
+    "github": "github.com/NuthanReddy",
+    "phone": "9474985552",
+    "location": {
+      "city": "Hyderabad",
+      "countryCode": "IN"
+    },
+    "summary": "Lead Software Engineer with 10+ years building large-scale data platforms and governance systems across Azure, AWS, and GCP. Strong hands-on expertise in Python/Java, Apache Spark, and modern Data Lake architectures. Proven record owning end-to-end SDLC, driving design reviews, improving reliability with automated quality gates, and mentoring teams to deliver trusted, compliant data products."
+  },
+  "headings": {
+    "work": {
+      "job": [
+        {
+          "position": "Senior Software Engineer",
+          "startDate": "Mar 2022",
+          "endDate": "Present",
+          "company": "Microsoft",
+          "location": "Hyderabad",
+          "highlights": [
+            "Led end-to-end SDLC for scalable data catalog for asset discovery, deletion and compliance tagging across 28B+ assets and 64 asset types in Microsoft.",
+            "Designed a generic Facet Processing Framework for different Privacy Programs. Developed the Privacy Signals program for data deletion, export delivery, processing, and compliance reporting at enterprise scale.",
+            "Architected Agent based Investigation and Remediation framework for incidents, reducing mean time to resolution by almost half and in some cases this entirely eliminated the need for manual intervention.",
+            "Redesigned distributed scan bottlenecks to deliver 2-20x performance gains, improving data freshness from 8 days to 24 hours.",
+            "Defined and enforced Data Contracts across DataMap, DataGrid, and Trust360, reducing live-site incidents by 50% and improving recovery time by 80%."
+          ],
+          "keywords": [
+            "Data Governance",
+            "Agentic Systems",
+            "Azure Foundry",
+            "Python",
+            "Apache Spark",
+            "Databricks",
+            "Azure Data Factory",
+            "Synapse",
+            "C#",
+            "Data Lake",
+            "Delta",
+            "CI/CD"
+          ]
+        },
+        {
+          "position": "Software Engineer III",
+          "startDate": "Oct 2020",
+          "endDate": "Mar 2022",
+          "company": "Walmart",
+          "location": "Bangalore",
+          "highlights": [
+            "Mentored junior engineers and improved team effectiveness through design discussions and distributed systems coaching.",
+            "Contributed to a modular, rule-based, config-driven data platform for Enterprise Business Services teams.",
+            "Optimized Spark data processing jobs, reducing execution time by ~30% and improving resource utilization.",
+            "Built a Go-based Code Freeze app integrating Slack and GitHub to automate deployment governance workflows."
+          ],
+          "keywords": ["Apache Spark", "Scala", "GCP", "BigQuery", "Go", "Slack", "GitHub"]
+        },
+        {
+          "position": "Software Development Engineer I",
+          "startDate": "Jan 2019",
+          "endDate": "Oct 2020",
+          "company": "Sigmoid",
+          "location": "Bangalore",
+          "highlights": [
+            "Sole developer of a planet-scale OpenX Prebid streaming pipeline supporting 100k req/sec and 1GB/sec throughput, presented at ApacheCon NA 2020.",
+            "Improved reliability and reduced costs by implementing circuit-breaker patterns and optimizing resource usage.",
+            "Led BigQuery-based NitroDB implementation, achieving ~30% cost reduction while maintaining performance.",
+            "Built multi-tenant discovery/search capabilities with Elasticsearch for high-speed data exploration.",
+            "Contributed critical bug fixes to the official spark-snowflake connector, improving data correctness.",
+            "Implemented sieve-based query optimization features in NitroDB to improve query efficiency."
+          ],
+          "keywords": ["Kafka", "AWS", "Glue", "EMR", "Java", "S3", "Kubernetes", "Docker", "BigQuery", "Elasticsearch"]
+        },
+        {
+          "position": "Consultant P2",
+          "startDate": "Jun 2015",
+          "endDate": "Jan 2019",
+          "company": "Capgemini",
+          "location": "Bangalore",
+          "highlights": [
+            "Migrated business logic from Teradata to Hive for a leading energy client and optimized workloads using partitioning, file formats, and cost-based optimization.",
+            "Built a real-time sensor analytics pipeline using Spark Streaming, NiFi, HBase and Power BI to predict oil well failures.",
+            "Developed custom Java UDFs to optimize complex transformations and close platform feature gaps."
+          ],
+          "keywords": ["Hive", "Apache Spark", "NiFi", "HBase", "Java", "Teradata"]
+        }
+      ]
+    },
+    "education": [
+      {
+          "institution": "Indian Institute of Technology (IIT) Kharagpur",
+          "area": "Industrial & Systems Engineering",
+          "studyType": "Bachelor of Technology",
+          "startDate": "2011",
+          "endDate": "2015"
+      },
+      {
+          "institution": "Sri Chaitanya Jr College, Gudavalli",
+          "area": "Board of Intermediate Education",
+          "studyType": "XII",
+          "startDate": "2009",
+          "endDate": "2011"
+      },
+      {
+          "institution": "Gowtham Concept School, Gudivada",
+          "area": "Board of Secondary Education",
+          "studyType": "X",
+          "startDate": "2008",
+          "endDate": "2009"
+      }
+    ],
+    "skills": [
+      {
+        "name": "Core Technologies",
+        "keywords": [
+          "Apache Spark",
+          "Distributed Systems",
+          "Data Modeling",
+          "RDBMS",
+          "Elasticsearch"
+        ]
+      },
+      {
+        "name": "Data Platforms",
+        "keywords": [
+          "Data Lake",
+          "Lakehouse",
+          "Delta Lake",
+          "Parquet",
+          "BigQuery",
+          "Snowflake"
+        ]
+      },
+      {
+        "name": "Languages",
+        "keywords": [
+          "Python",
+          "Java",
+          "Scala",
+          "SQL",
+          "Go",
+          "Shell Scripting"
+        ]
+      },
+      {
+        "name": "Engineering Excellence",
+        "keywords": [
+          "Git",
+          "CI/CD",
+          "Automated Testing",
+          "Agile/Scrum",
+          "System Design",
+          "Code Reviews"
+        ]
+      },
+      {
+        "name": "Cloud & Infrastructure",
+        "keywords": [
+          "Azure",
+          "AWS",
+          "GCP",
+          "Databricks",
+          "Docker",
+          "Kubernetes"
+        ]
+      },
+      {
+        "name": "Data Governance",
+        "keywords": [
+          "Data Governance",
+          "Data Quality",
+          "GDPR Compliance"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "name": "Azure Data Governance",
+        "company": "Microsoft",
+        "keywords": ["Python", "Databricks", "Azure Data Factory", "Synapse", "C#", "Data Lake"],
+        "description": [
+          "Directed Privacy Signals Team managing data deletion, export delivery, and compliance operations",
+          "Optimized Data Scan to achieve 2-20x improvement by removing bottlenecks and non-deterministic code",
+          "Created APIs to tag/update assets for Data Map and enhanced scalability with a variety of techniques",
+          "Constructed deployment, monitoring and alerting frameworks for Signals Team",
+          "Collaborated across Microsoft to identify and source new datasets to identify asset ownerships. This helped in reducing dark data from ~4% to <0.1% of total data thereby improving accuracy in GDPR compliance KPIs and reducing the risk of fines from data protection authorities.",
+          "Established Data Contracts between DataMap, DataGrid and Trust360 teams and enforced quality rules based on the contracts and gracefully handle them. This halved the Live Site instances and preventing corruption and back-filling scenarios thereby reducing the TTR by ~80%.",
+          "Eliminated non-deterministic code paths in data processing jobs, enhancing testability, reliability and consistency."
+        ]
+      },
+      {
+        "name": "EBS Data Pipeline Framework",
+        "company": "Walmart",
+        "keywords": ["Spark", "Scala", "GCP", "Go", "Slack"],
+        "description": [
+          "Created rule-based data processing framework for the Enterprise Business Services Teams",
+          "Crafted modularized CILL rules and applied config-driven architecture",
+          "Developed Code Freeze App to freeze GitHub repo from Slack using Go"
+        ]
+      },
+      {
+        "name": "Ad Pre-bid Pipeline",
+        "company": "Sigmoid - OpenX",
+        "keywords": ["Kafka", "PubSub", "DataFlow", "Java", "Helm", "Kubernetes", "Docker"],
+        "description": [
+          "Architected planet scale cost-effective streaming pipeline supporting 100k req/sec, 1GB/sec (14k req/sec/core) and 10k concurrent users - presented at Apache Con NA 2020",
+          "Deployed all services to GKE with auto-scaling based on load",
+          "Configured circuit breaker to redirect data to PubSub + Dataflow improving reliability when Kafka + Kafka Connect is down"
+        ]
+      },
+      {
+        "name": "NitroDB on BigQuery",
+        "company": "Sigmoid",
+        "keywords": ["Apache Spark", "BigQuery", "NitroDB"],
+        "description": [
+          "Evaluated Percentile function in BigQuery and deployed percentile at scale using t-digest algorithm achieving 10-100x performance on pre-aggregation",
+          "Evaluated, tested and deployed NitroDB on BigQuery reducing costs by 30%"
+        ]
+      },
+      {
+        "name": "NitroDB Search Optimization",
+        "company": "Sigmoid",
+        "keywords": ["Elasticsearch", "NitroDB"],
+        "description": [
+          "Designed responsive search feature for multi-tenant (multi-organization) use case where each organization sees different set of options",
+          "Integrated Elasticsearch with NitroDB and created update/reindexing strategy"
+        ]
+      },
+      {
+        "name": "Snowflake ETL",
+        "company": "OpenX",
+        "keywords": ["Apache Spark", "Snowflake", "Python"],
+        "url": "https://github.com/snowflakedb/spark-snowflake",
+        "description": [
+          "Contributed as one of the committers of spark-snowflake, fixing critical bugs involving data correctness",
+          "Constructed ETL pipeline for Snowflake using Python",
+          "Administered Snowflake for costs, permissions and External Data Source (GCS)"
+        ]
+      }
+    ],
+    "certifications": [
+        {
+            "name": "Databricks Fundamentals",
+            "date": "2026",
+            "issuer": "Databricks Academy",
+            "url": "https://credentials.databricks.com/8f0471c4-1155-4daf-9cd2-b08a6dac568a"
+        },
+        {
+            "name": "Cloud Computing and Distributed Systems",
+            "date": "2023"
+        },
+        {
+            "name": "AWS Certified Solutions Architect – Associate",
+            "date": "2022"
+        }
+    ],
+    "courses": [
+        {
+            "name": "Agentic AI with Azure AI Foundry",
+            "year": "2025",
+            "institute": "Microsoft Learn"
+        },
+        {
+            "name": "Data Structures and Algorithms",
+            "year": "2015",
+            "institute": "IIT Kharagpur"
+        },
+        {
+            "name": "Soft Computing and Heuristic Search",
+            "year": "2015",
+            "institute": "IIT Kharagpur"
+        },
+        {
+            "name": "Java Memory Management",
+            "institute": "LinkedIn Learning"
+        },
+        {
+            "name": "Google Cloud Platform Big Data and Machine Learning Fundamentals",
+            "institute": "Coursera"
+        },
+        {
+            "name": "Apache Kafka Series - Kafka Cluster Setup & Administration",
+            "institute": "Udemy Academy"
+        },
+        {
+            "name": "Feature Selection for Machine Learning",
+            "institute": "Udemy Academy"
+        },
+        {
+            "name": "AWS Certified Developer - Associate",
+            "year": "2018",
+            "institute": "Udemy"
+        },
+        {
+            "name": "AWS Certified Solutions Architect - Associate",
+            "year": "2018",
+            "institute": "Udemy"
+        },
+        {
+            "name": "Python for Data Science and Machine Learning Bootcamp",
+            "institute": "Udemy Academy"
+        },
+        {
+            "name": "Cloud Computing and Distributed Systems",
+            "institute": "IIT Patna"
+        }
+    ]
+  }
+}
