@@ -5,12 +5,13 @@
     "email": "nuthan.reddy999@gmail.com",
     "linkedin": "linkedin.com/in/nuthanreddy/",
     "github": "github.com/NuthanReddy",
+    "website": "nuthanreddy.github.io",
     "phone": "9474985552",
     "location": {
       "city": "Hyderabad",
       "countryCode": "IN"
     },
-    "summary": "Lead Software Engineer with 10+ years building large-scale data platforms and governance systems across Azure, AWS, and GCP. Strong hands-on expertise in Python/Java, Apache Spark, and modern Data Lake architectures. Proven record owning end-to-end SDLC, driving design reviews, improving reliability with automated quality gates, and mentoring teams to deliver trusted, compliant data products."
+    "summary": "Lead Software Engineer with 10+ years building large-scale data platforms and governance systems across Azure, AWS and GCP. Strong hands-on expertise in Python/Java, Apache Spark, and modern Data Lake architectures."
   },
   "headings": {
     "work": {

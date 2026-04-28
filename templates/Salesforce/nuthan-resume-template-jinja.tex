@@ -129,6 +129,9 @@
     {%- if basics.github -%}
       \;|\; {{ basics.github | latex_escape }}
     {%- endif -%}
+    {%- if basics.website -%}
+      \;|\; {{ basics.website | latex_escape }}
+    {%- endif -%}
 \end{center}
 
 %-----------SUMMARY-----------
